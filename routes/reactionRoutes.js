@@ -1,0 +1,11 @@
+import express from 'express';
+const router = express.Router();
+import reactionController from '../controllers/reactionController.js';
+import authmiddleware from '../middleware/auth.js';
+import validateSchema from '../middleware/validateSchema.js';
+import reactionSchema from '../Json_Schema/reactionSchema.js';
+router.get('/:id',reactionController.getAllReaction);
+router.post('/:id',authmiddleware,validateSchema(reactionSchema),reactionController.createReaction);
+router.put('/:id',authmiddleware,validateSchema(reactionSchema),reactionController.updateReaction);
+router.delete('/:id',authmiddleware,reactionController.deleteReaction);
+export default router;

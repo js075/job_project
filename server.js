@@ -1,0 +1,30 @@
+import express from 'express';
+import './crons/cronjob.js';
+const app=express();
+import dotenv from "dotenv";
+dotenv.config();
+const  PORT=process.env.PORT;
+import userRoute from './routes/userRoutes.js';
+import jobRoute from './routes/jobRoutes.js';
+import jobuserRoute from './routes/jobUserRoutes.js';
+import postRoute from './routes/postRoutes.js';
+import commentRoute from './routes/commentRoutes.js';
+import mentionRoute from './routes/mentionRoutes.js';
+import taggedRoute from './routes/taggedRoutes.js';
+import shareRoute from './routes/shareRoutes.js';
+import reactionRoute from './routes/reactionRoutes.js';
+import forgotPasswordRoute from './routes/forgotPasswordRoutes.js';
+app.use(express.json());
+app.use('/api/user',userRoute);
+app.use('/api/job',jobRoute);
+app.use('/api/jobuser',jobuserRoute);
+app.use('/api/comment',commentRoute);
+app.use('/api/share',shareRoute);
+app.use('/api/post',postRoute);
+app.use('/api/taggedUser',taggedRoute);
+app.use('/api/reaction',reactionRoute);
+app.use('/api/mention',mentionRoute);
+app.use('/api',forgotPasswordRoute);
+app.listen(PORT,()=>{
+    console.log(`express listen on ${PORT}`);
+})
