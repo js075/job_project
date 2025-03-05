@@ -1,7 +1,7 @@
 
 import crypto from "crypto";
 import User from "../models/user.js"; 
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcrypt.js';
 import { sendOtpEmail } from "../utils/email.js";
 
 
